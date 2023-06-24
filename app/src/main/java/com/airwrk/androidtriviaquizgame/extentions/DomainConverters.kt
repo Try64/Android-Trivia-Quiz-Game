@@ -18,7 +18,7 @@ object DomainConverters {
                     index++
                 }
             }
-            list.add(Question(question = it.question.text, option1 = options[0], option2 = options[1], option3 = options[2], option4 = options[3], isDisplayed = "no", id = null))
+            list.add(Question(ans = it.correctAnswer,question = it.question.text, option1 = options[0], option2 = options[1], option3 = options[2], option4 = options[3], isDisplayed = "no", id = null))
         }
         return list.toList()
     }

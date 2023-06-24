@@ -22,4 +22,8 @@ class QuizViewModel @Inject constructor(private val repository: QuizRepository) 
         }
     }
 
+    fun addDataToDB(list:List<Question>){
+        repository.
+    }
+
 }

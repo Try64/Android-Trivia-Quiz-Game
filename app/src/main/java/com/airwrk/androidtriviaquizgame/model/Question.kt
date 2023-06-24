@@ -12,6 +12,6 @@ data class Question(
     var option2: String? = null,
     var option3: String? = null,
     var option4: String? = null,
-    var ans:Int? = null,
+    var ans:String? = null,
     var isDisplayed:String
 )

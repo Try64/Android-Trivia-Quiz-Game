@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import com.airwrk.androidtriviaquizgame.databinding.ActivityMainBinding
 import com.airwrk.androidtriviaquizgame.view.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     private lateinit var binding:ActivityMainBinding
