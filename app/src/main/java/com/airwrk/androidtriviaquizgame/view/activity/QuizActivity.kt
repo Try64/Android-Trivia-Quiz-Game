@@ -140,6 +140,7 @@ class QuizActivity : AppCompatActivity() {
                 buttonConfirmNext.text = "Next"
             }else{
                 buttonConfirmNext.text = "Finish"
+                viewModel.updateMaxScore(this@QuizActivity,score)
             }
 
         }
