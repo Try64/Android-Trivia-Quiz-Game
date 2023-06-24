@@ -1,5 +1,6 @@
 package com.airwrk.androidtriviaquizgame.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import com.airwrk.androidtriviaquizgame.databinding.ActivityMainBinding
 import com.airwrk.androidtriviaquizgame.view.BaseActivity
@@ -13,6 +14,20 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         //binding
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+
+        binding.apply {
+            buttonQuizHistory.setOnClickListener {
+
+            }
+            buttonStartQuiz.setOnClickListener {
+                Intent(this@MainActivity,QuizActivity::class.java).apply {
+                    startActivity(this)
+                }
+                finish()
+            }
+
+        }
 
 
 

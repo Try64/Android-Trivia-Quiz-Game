@@ -1,7 +1,9 @@
 package com.airwrk.androidtriviaquizgame
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class TriviaQuizApp: Application() {
 
     lateinit var application:Application
