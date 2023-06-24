@@ -26,7 +26,6 @@ class MainActivity : BaseActivity() {
                 Intent(this@MainActivity,QuizActivity::class.java).apply {
                     startActivity(this)
                 }
-                finish()
             }
 
         }

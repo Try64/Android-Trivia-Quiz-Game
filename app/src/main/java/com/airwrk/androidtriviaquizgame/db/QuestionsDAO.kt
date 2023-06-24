@@ -22,5 +22,9 @@ interface QuestionsDAO {
     @Update()
     suspend fun updateQuestion(question:Question)
 
+    @Query("SELECT * FROM Question")
+    suspend fun getQuestions():List<Question>
+
+
 
 }

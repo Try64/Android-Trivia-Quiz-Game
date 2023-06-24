@@ -15,12 +15,24 @@ class QuizRepository @Inject constructor(private val quizAPI: QuizAPI, private v
     val questions: LiveData<List<Question>>
         get() = _questions
 
+    private val _questionsWithID = MutableLiveData<List<Question>>()
+    val questionsWithID: LiveData<List<Question>>
+        get() = _questionsWithID
+
     suspend fun getQuestions(){
         val result = quizAPI.getQuestions()
         if(result.isSuccessful && result.body() != null){
             quizDB.getQuestionsDAO().addQuestion(DomainConverters.getQuestionsFromBackend(response = result.body()!!))
             _questions.postValue(DomainConverters.getQuestionsFromBackend(response = result.body()!!))
         }
+    }
+
+    suspend fun updateQuestion(question:Question){
+        quizDB.getQuestionsDAO().updateQuestion(question)
+    }
+
+    suspend fun getQuestionsFromDB(){
+        _questionsWithID.postValue(quizDB.getQuestionsDAO().getQuestions())
     }
 
 }

@@ -16,14 +16,31 @@ class QuizViewModel @Inject constructor(private val repository: QuizRepository) 
     val questionsLiveData : LiveData<List<Question>>
         get() = repository.questions
 
+    val questionsLiveDataWithID : LiveData<List<Question>>
+        get() = repository.questionsWithID
+
     init {
         viewModelScope.launch {
             repository.getQuestions()
         }
     }
 
-    fun addDataToDB(list:List<Question>){
-        repository.
+    fun updateQuestion(question: Question){
+        viewModelScope.launch {
+            repository.updateQuestion(question)
+        }
     }
+
+    fun getAllQuestionsFromDB(){
+        viewModelScope.launch {
+            repository.getQuestionsFromDB()
+        }
+    }
+
+
+
+//    fun addDataToDB(list:List<Question>){
+//        repository.
+//    }
 
 }
