@@ -49,7 +49,9 @@ class MainActivity : BaseActivity() {
 
         binding.apply {
             buttonQuizHistory.setOnClickListener {
-
+                Intent(this@MainActivity,EndActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
             buttonStartQuiz.setOnClickListener {
                 viewModel.getAllQuestionsFromDB()

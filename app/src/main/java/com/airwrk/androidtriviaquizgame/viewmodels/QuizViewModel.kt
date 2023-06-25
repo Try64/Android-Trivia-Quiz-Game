@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.airwrk.androidtriviaquizgame.model.History
 import com.airwrk.androidtriviaquizgame.model.Question
 import com.airwrk.androidtriviaquizgame.repository.QuizRepository
 import com.airwrk.androidtriviaquizgame.util.Constants
@@ -25,6 +26,9 @@ class QuizViewModel @Inject constructor(private val repository: QuizRepository) 
     var _maxScore = MutableLiveData<Int>()
     val maxScoreLD : LiveData<Int>
         get() = _maxScore
+
+    val historyLiveData : LiveData<List<History>>
+        get() = repository.historyWithID
 
 
     fun updateQuestion(question: Question){
@@ -62,6 +66,18 @@ class QuizViewModel @Inject constructor(private val repository: QuizRepository) 
     fun downLoadQuestions(){
         viewModelScope.launch {
             repository.getQuestions()
+        }
+    }
+
+    fun recordHistory(history: History){
+        viewModelScope.launch {
+            repository.recordHistory(history)
+        }
+    }
+
+    fun getAllHistory(){
+        viewModelScope.launch {
+            repository.getAllHistory()
         }
     }
 

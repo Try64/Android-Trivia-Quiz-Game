@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:padding="16dp"
+    tools:context=".view.activity.EndActivity">
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="Android Trivia Quiz Game"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="25sp"
+        app:autoSizeMaxTextSize="35sp"
+        app:autoSizeStepGranularity="2sp"
+        android:textColor="@android:color/black"
+        android:textSize="35sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/btnLayout"
+        android:layout_below="@+id/heading"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        tools:listitem="@layout/history_item"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/btnLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/button_finish"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finish" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.airwrk.androidtriviaquizgame.db.QuizDB
 import com.airwrk.androidtriviaquizgame.extentions.DomainConverters
+import com.airwrk.androidtriviaquizgame.model.History
 import com.airwrk.androidtriviaquizgame.model.Question
 import com.airwrk.androidtriviaquizgame.retrofit.QuizAPI
 import javax.inject.Inject
@@ -19,6 +20,10 @@ class QuizRepository @Inject constructor(private val quizAPI: QuizAPI, private v
     val questionsWithID: LiveData<List<Question>>
         get() = _questionsWithID
 
+    private val _historyWithID = MutableLiveData<List<History>>()
+    val historyWithID: LiveData<List<History>>
+        get() = _historyWithID
+
     suspend fun getQuestions(){
         val result = quizAPI.getQuestions()
         if(result.isSuccessful && result.body() != null){
@@ -33,6 +38,14 @@ class QuizRepository @Inject constructor(private val quizAPI: QuizAPI, private v
 
     suspend fun getQuestionsFromDB(){
         _questionsWithID.postValue(quizDB.getQuestionsDAO().getQuestions())
+    }
+
+    suspend fun recordHistory(history: History){
+        quizDB.getHistoryDAO().addHistory(history = history)
+    }
+
+    suspend fun getAllHistory(){
+        _historyWithID.postValue(quizDB.getHistoryDAO().getHistory())
     }
 
 }

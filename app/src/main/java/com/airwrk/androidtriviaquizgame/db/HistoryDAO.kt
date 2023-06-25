@@ -9,7 +9,7 @@ import com.airwrk.androidtriviaquizgame.model.History
 @Dao
 interface HistoryDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addHistory(history : List<History>)
+    suspend fun addHistory(history : History)
 
     @Query("SELECT * FROM History")
     suspend fun getHistory() : List<History>

@@ -1,5 +1,6 @@
 package com.airwrk.androidtriviaquizgame.view.activity
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.airwrk.androidtriviaquizgame.R
 import com.airwrk.androidtriviaquizgame.databinding.ActivityQuizBinding
+import com.airwrk.androidtriviaquizgame.model.History
 import com.airwrk.androidtriviaquizgame.model.Question
 import com.airwrk.androidtriviaquizgame.viewmodels.QuizViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -151,6 +153,7 @@ class QuizActivity : AppCompatActivity() {
             }else{
                 buttonConfirmNext.text = "Finish"
                 viewModel.updateMaxScore(this@QuizActivity,score)
+                viewModel.recordHistory(History(date = System.currentTimeMillis().toString(), score = score,id = null))
             }
 
         }
