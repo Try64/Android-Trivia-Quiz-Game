@@ -14,7 +14,6 @@ class HistoryAdapter(
 ):RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
     inner class HistoryViewHolder(itemView: HistoryItemBinding) : RecyclerView.ViewHolder(itemView.root),
         View.OnClickListener {
-        val historyView = itemView.historyCardView
         val dateTime = itemView.dateTime
         val serial = itemView.serialNo
         val score = itemView.score

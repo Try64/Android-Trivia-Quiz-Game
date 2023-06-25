@@ -1,9 +1,8 @@
 package com.airwrk.androidtriviaquizgame.view.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.airwrk.androidtriviaquizgame.R
+import androidx.appcompat.app.AppCompatActivity
 import com.airwrk.androidtriviaquizgame.databinding.ActivityQuizEndBinding
 import dagger.hilt.android.AndroidEntryPoint
 

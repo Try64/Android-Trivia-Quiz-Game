@@ -21,6 +21,6 @@ class TriviaQuizApp: Application() {
             private set
 
         lateinit var instance: TriviaQuizApp
-        val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "quiz_app")
+        val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = BuildConfig.PREFERENCE_KEY)
     }
 }

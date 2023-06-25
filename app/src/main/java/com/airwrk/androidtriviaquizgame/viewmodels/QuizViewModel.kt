@@ -10,7 +10,6 @@ import com.airwrk.androidtriviaquizgame.model.Question
 import com.airwrk.androidtriviaquizgame.repository.QuizRepository
 import com.airwrk.androidtriviaquizgame.util.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject

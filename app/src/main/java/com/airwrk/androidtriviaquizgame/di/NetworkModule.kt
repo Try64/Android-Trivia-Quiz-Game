@@ -1,7 +1,7 @@
 package com.airwrk.androidtriviaquizgame.di
 
+import com.airwrk.androidtriviaquizgame.BuildConfig
 import com.airwrk.androidtriviaquizgame.retrofit.QuizAPI
-import com.airwrk.androidtriviaquizgame.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +17,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun providesRetrofit() : Retrofit {
-        return Retrofit.Builder().baseUrl(Constants.BASE_URL)
+        return Retrofit.Builder().baseUrl(BuildConfig.API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

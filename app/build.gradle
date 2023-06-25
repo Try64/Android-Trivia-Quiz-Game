@@ -35,6 +35,44 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            buildConfigField("String", "API_URL", "\"https://the-trivia-api.com/v2/\"") // Live
+            buildConfigField("String", "MAX_SCORE_KEY", "\"max_score\"") // Live
+            buildConfigField("String", "BASE_CONFIG", "\"live\"") // Live
+            buildConfigField("String", "PREFERENCE_KEY", "\"quiz_app\"") // Live
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField("String", "BASE_CONFIG", "\"test\"") // test
+            buildConfigField("String", "API_URL", "\"https://the-trivia-api.com/v2/\"") // Live
+            buildConfigField("String", "MAX_SCORE_KEY", "\"max_score\"") // Live
+            buildConfigField("String", "PREFERENCE_KEY", "\"quiz_app\"") // Live
+        }
+        beta {
+            buildConfigField("String", "BASE_CONFIG", "\"test\"") // test
+            buildConfigField("String", "API_URL", "\"https://the-trivia-api.com/v2/\"") // Live
+            buildConfigField("String", "MAX_SCORE_KEY", "\"max_score\"") // Live
+            buildConfigField("String", "PREFERENCE_KEY", "\"quiz_app\"") // Live
+        }
+        applicationVariants.all {
+
+            variant ->
+                variant.outputs.each {
+                    output ->
+                        project.ext { appName = 'Travia-Quiz-App' }
+                        def formattedDate = new Date().format('yyyy-MM-dd-HH-mm-ss')
+                        def newName = output.outputFile.name
+                        newName = newName.replace("app-", "$project.ext.appName-")
+                        newName = newName.replace("-debug", "-debug-" + formattedDate)
+                        newName = newName.replace("-release", "-release-" + formattedDate)
+                        output.outputFileName = newName
+                }
+        }
     }
 
 }

@@ -3,18 +3,17 @@ package com.airwrk.androidtriviaquizgame.util
 import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.airwrk.androidtriviaquizgame.BuildConfig
 import com.airwrk.androidtriviaquizgame.TriviaQuizApp.Companion.dataStore
 import kotlinx.coroutines.flow.first
 
 object Constants {
-    const val BASE_URL = "https://the-trivia-api.com/v2/"
-    const val MAX_SCORE = "max_score"
 
     suspend fun setMaxScore(context:Context,value:Int){
-        writeToDataStore(context, value = value.toString(),key = MAX_SCORE)
+        writeToDataStore(context, value = value.toString(),key = BuildConfig.MAX_SCORE_KEY)
     }
     suspend fun getMaxScore(context: Context):Int{
-        return readFromDataStore(context, MAX_SCORE)?.toInt() ?: 0
+        return readFromDataStore(context, BuildConfig.MAX_SCORE_KEY)?.toInt() ?: 0
     }
 
     private suspend fun writeToDataStore(context: Context, value:String, key:String) = context.dataStore.edit { settings -> settings[stringPreferencesKey(key)] = value }
