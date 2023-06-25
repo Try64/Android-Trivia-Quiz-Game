@@ -26,11 +26,6 @@ class QuizViewModel @Inject constructor(private val repository: QuizRepository) 
     val maxScoreLD : LiveData<Int>
         get() = _maxScore
 
-    init {
-        viewModelScope.launch {
-            repository.getQuestions()
-        }
-    }
 
     fun updateQuestion(question: Question){
         viewModelScope.launch {
@@ -61,6 +56,12 @@ class QuizViewModel @Inject constructor(private val repository: QuizRepository) 
                 val maxScoreTillNow = Constants.getMaxScore(context)
                 _maxScore.postValue(maxScoreTillNow)
             }
+        }
+    }
+
+    fun downLoadQuestions(){
+        viewModelScope.launch {
+            repository.getQuestions()
         }
     }
 

@@ -36,9 +36,18 @@ class QuizActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[QuizViewModel::class.java]
+        viewModel.getAllQuestionsFromDB()
 
-        viewModel.questionsLiveData.observe(this){
-            listQuestions = it
+        viewModel.questionsLiveDataWithID.observe(this){
+            val unvisited = ArrayList<Question>()
+            var index = 0
+            while(unvisited.size < 5){
+                if(it[index].isDisplayed == "no"){
+                    unvisited.add(it[index])
+                }
+                index++
+            }
+            listQuestions = unvisited.toList()
             colorStateList = binding.radioButton1.textColors
             questionCountTotal = listQuestions.size
 
@@ -67,6 +76,7 @@ class QuizActivity : AppCompatActivity() {
 
     private fun checkAns() {
         isAnswered = true
+        currentQuestion.isDisplayed = "yes"
         viewModel.updateQuestion(currentQuestion)
         when(binding.radioGroup.checkedRadioButtonId){
             binding.radioButton1.id ->{

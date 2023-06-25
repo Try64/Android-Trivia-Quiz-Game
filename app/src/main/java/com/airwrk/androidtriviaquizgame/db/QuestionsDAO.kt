@@ -2,6 +2,7 @@ package com.airwrk.androidtriviaquizgame.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -19,8 +20,11 @@ interface QuestionsDAO {
     @Query("SELECT * FROM Question WHERE Question.isDisplayed = 'no'")
     suspend fun getUnAttendedQuestion():List<Question>
 
-    @Update()
+    @Update
     suspend fun updateQuestion(question:Question)
+
+    @Delete
+    suspend fun deleteQuestion(question:Question)
 
     @Query("SELECT * FROM Question")
     suspend fun getQuestions():List<Question>
