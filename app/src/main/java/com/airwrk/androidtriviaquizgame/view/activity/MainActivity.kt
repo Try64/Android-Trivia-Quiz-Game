@@ -49,7 +49,7 @@ class MainActivity : BaseActivity() {
 
         binding.apply {
             buttonQuizHistory.setOnClickListener {
-                Intent(this@MainActivity,EndActivity::class.java).apply {
+                Intent(this@MainActivity,HistoryActivity::class.java).apply {
                     startActivity(this)
                 }
             }

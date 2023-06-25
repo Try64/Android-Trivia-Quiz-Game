@@ -240,6 +240,11 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun finishQuiz() {
+        Intent(this@QuizActivity,QuizEndActivity::class.java).apply {
+            this.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            this.putExtra("score",score)
+            startActivity(this)
+        }
         finish()
     }
 

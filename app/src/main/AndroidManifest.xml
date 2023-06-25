@@ -16,7 +16,10 @@
         android:theme="@style/Theme.AndroidTriviaQuizGame"
         tools:targetApi="31">
         <activity
-            android:name=".view.activity.EndActivity"
+            android:name=".view.activity.QuizEndActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.HistoryActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.QuizActivity"
