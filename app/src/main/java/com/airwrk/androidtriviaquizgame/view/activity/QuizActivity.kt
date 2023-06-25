@@ -219,6 +219,9 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun handleTimeOutEvent() {
+        if(score > 0){
+            score--
+        }
         isAnswered = true
         currentQuestion.isDisplayed = "yes"
         viewModel.updateQuestion(currentQuestion)
